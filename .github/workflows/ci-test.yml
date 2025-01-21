@@ -1,0 +1,30 @@
+name: CI test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        organism:
+          - "staphylococcus_aureus"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print Debug Info
+        run: |
+          ORGANISM="${{ matrix.organism }}"
+          SHORT_ORG=$(echo "${{ matrix.organism }}" | awk -F'_' '{print substr($1,1,1) $2}')
+          echo "${ORGANISM}"
+          echo "${SHORT_ORG}_all"
+
+
