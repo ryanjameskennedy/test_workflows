@@ -23,7 +23,6 @@ jobs:
       - name: Print Debug Info
         run: |
           SHORT_ORG=$(echo "${{ matrix.organism }}" | awk -F'_' '{print substr($1,1,1) $2}')
-          echo "${SHORT_ORG}_all"
           make ${SHORT_ORG}_all
 
 
