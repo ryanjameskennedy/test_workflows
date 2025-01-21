@@ -25,6 +25,6 @@ jobs:
           ORGANISM="${{ matrix.organism }}"
           SHORT_ORG=$(echo "${{ matrix.organism }}" | awk -F'_' '{print substr($1,1,1) $2}')
           echo "${ORGANISM}"
-          echo "${SHORT_ORG}_all"
+          echo ${SHORT_ORG}_all
 
 
